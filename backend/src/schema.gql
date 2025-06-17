@@ -1,0 +1,23 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Game {
+  id: String!
+  board: [String]
+  currentPlayer: String!
+  winner: String
+}
+
+type Query {
+  joinGame(id: String!): Game!
+}
+
+type Mutation {
+  createGame: Game!
+  makeMove(id: String!, index: Int!): Game!
+}
+
+type Subscription {
+  gameUpdated(id: String!): Game!
+}
