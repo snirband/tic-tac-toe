@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PubSub } from 'graphql-subscriptions';
-import { Game } from '../domain/game.model';
+import { Game } from '../models/game.model';
 
 const pubSub = new PubSub();
 

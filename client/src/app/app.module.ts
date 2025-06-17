@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GameModule } from './game/game.module';
 import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
@@ -45,31 +44,13 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   };
 }
 
-// @NgModule({
-//   declarations: [AppComponent],
-//   imports: [
-//     BrowserModule,
-//     HttpClientModule,
-//     ApolloModule,
-//   ],
-//   providers: [
-//     {
-//       provide: APOLLO_OPTIONS,
-//       useFactory: createApollo,
-//       deps: [HttpLink],
-//     },
-//   ],
-//   bootstrap: [AppComponent]
-// })
-// export class AppModule { }
+
 @NgModule({
   imports: [
     GameModule,
-    // GraphQLModule,
     BrowserModule,
     HttpClientModule,
     ApolloModule,
-    AppRoutingModule  
   ],
   providers: [
         {
