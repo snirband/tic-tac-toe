@@ -1,0 +1,31 @@
+<div class="game-container" *ngIf="game$ | async as game">
+  <h2>Tic Tac Toe - Game ID: {{ game.id }}</h2>
+
+  <div class="board">
+    <button 
+      class="cell" 
+      *ngFor="let cell of game.board; index as i"
+      [disabled]="cell || game.winner"
+      (click)="makeMove(game.id, i)">
+      {{ cell || '-' }}
+    </button>
+  </div>
+
+  <div class="status">
+    <ng-container *ngIf="game.winner; else nextTurn">
+      <p *ngIf="game.winner === 'DRAW'">It's a draw!</p>
+      <p *ngIf="game.winner !== 'DRAW'">Winner: {{ game.winner }}</p>
+    </ng-container>
+
+    <ng-template #nextTurn>
+      <p>Next player: {{ game.currentPlayer }}</p>
+    </ng-template>
+  </div>
+</div>
+
+<div *ngIf="!(game$ | async)">
+  <p>No game selected</p>
+  <button (click)="createGame()">create game</button>
+       <input [(ngModel)]="gameId" type="text" id="textInput" placeholder="Enter game id" />
+        <button (click)="joinGame()">Send</button>
+  </div>
